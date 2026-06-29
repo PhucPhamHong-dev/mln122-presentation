@@ -2,17 +2,21 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/((?!api/|TheLastShop/|downloads/|game-preview/|assets/|favicon.ico|vite.svg).*)",
+      "source": "/((?!TheLastShop/|downloads/|assets/|favicon.ico|vite.svg).*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/TheLastShop/Build/(.*)\\.wasm",
+      "source": "/TheLastShop/Build/(.*)\\.js\\.br",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/wasm"
+          "value": "application/javascript"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "br"
         }
       ]
     },
@@ -22,19 +26,6 @@
         {
           "key": "Content-Type",
           "value": "application/wasm"
-        },
-        {
-          "key": "Content-Encoding",
-          "value": "br"
-        }
-      ]
-    },
-    {
-      "source": "/TheLastShop/Build/(.*)\\.js\\.br",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
         },
         {
           "key": "Content-Encoding",
@@ -56,15 +47,15 @@
       ]
     },
     {
-      "source": "/TheLastShop/Build/(.*)\\.wasm\\.gz",
+      "source": "/TheLastShop/Build/(.*)\\.symbols\\.json\\.br",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/wasm"
+          "value": "application/json"
         },
         {
           "key": "Content-Encoding",
-          "value": "gzip"
+          "value": "br"
         }
       ]
     },
@@ -74,6 +65,19 @@
         {
           "key": "Content-Type",
           "value": "application/javascript"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "gzip"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.wasm\\.gz",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
         },
         {
           "key": "Content-Encoding",
