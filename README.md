@@ -15,7 +15,7 @@ Project có dạng deck/slide, gồm:
 - Đánh giá
 - Game mô phỏng
 - Q&A / Trợ lý học thuật
-- Trang riêng `/boardgame-play` để nhúng Unity WebGL
+- Trang riêng `/game-play` để nhúng Unity WebGL
 
 ## Tech Stack
 
@@ -33,14 +33,14 @@ Project có dạng deck/slide, gồm:
 - Tab `Lý luận` có nhiều mục nội dung và animation chuyển tab
 - `Game` có preview image, nút chơi game, nút tải Windows/Android tạm thời
 - `Q&A` có khung chat AI và lưu hội thoại cục bộ
-- Route `/boardgame-play` hiển thị Unity WebGL từ `public/TheLastShop/index.html`
+- Route `/game-play` hiển thị Unity WebGL từ `public/TheLastShop/index.html`
 
 ## Cấu Trúc Quan Trọng
 
 - `src/App.jsx`: điều phối route và section chính
 - `src/components/TheorySection.jsx`: section Lý luận
-- `src/components/BoardgameSection.jsx`: section Game
-- `src/components/BoardgamePlay.jsx`: trang Unity WebGL
+- `src/components/GameSection.jsx`: section Game
+- `src/components/GamePlay.jsx`: trang Unity WebGL
 - `src/components/QASection.jsx`: phần Q&A / Trợ lý học thuật
 - `src/lib/chatService.js`: logic gọi AI và lọc phạm vi trả lời
 - `api/chat.js`: API handler cho môi trường deploy
@@ -90,7 +90,7 @@ Khi người dùng hỏi ở tab Q&A:
 ## Route Quan Trọng
 
 - `/` hoặc `/?section=...`: trang thuyết trình chính
-- `/boardgame-play`: trang Unity WebGL riêng
+- `/game-play`: trang Unity WebGL riêng
 
 ## Unity WebGL
 

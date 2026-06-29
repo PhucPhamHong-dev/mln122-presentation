@@ -5,13 +5,13 @@ import { theorySections } from './data/theoryContent'
 import GlassCard from './components/GlassCard'
 import TheorySection from './components/TheorySection'
 import QASection from './components/QASection'
-import BoardgameSection from './components/BoardgameSection'
-import BoardgamePlay from './components/BoardgamePlay'
+import GameSection from './components/GameSection'
+import GamePlay from './components/GamePlay'
 import TabStage from './components/TabStage'
 
 const theoryOrder = theorySections.map((item) => item.id)
 const analysisOrder = analysisSections.map((item) => item.id)
-const BOARDGAME_PLAY_PATH = '/boardgame-play'
+const GAME_PLAY_PATH = '/game-play'
 const mainSectionIds = new Set(navItems.map((item) => item.id))
 
 function readLocationState() {
@@ -20,14 +20,19 @@ function readLocationState() {
   }
 
   const { pathname, search } = window.location
-  if (pathname === BOARDGAME_PLAY_PATH) {
-    return { route: 'boardgame-play', section: 'boardgame' }
+  if (pathname === '/boardgame-play') {
+    return { route: 'game-play', section: 'game' }
+  }
+
+  if (pathname === GAME_PLAY_PATH) {
+    return { route: 'game-play', section: 'game' }
   }
 
   const section = new URLSearchParams(search).get('section')
+  const normalizedSection = section === 'boardgame' ? 'game' : section
   return {
     route: 'main',
-    section: mainSectionIds.has(section) ? section : 'hero',
+    section: mainSectionIds.has(normalizedSection) ? normalizedSection : 'hero',
   }
 }
 
@@ -59,16 +64,16 @@ function App() {
     setActiveSection(id)
 
     if (typeof window !== 'undefined') {
-      const nextUrl = id === 'boardgame' ? '/?section=boardgame' : '/'
+      const nextUrl = id === 'game' ? '/?section=game' : '/'
       window.history.pushState({ route: 'main', section: id }, '', nextUrl)
     }
   }
 
-  const goBoardgamePlay = () => {
-    setRoute('boardgame-play')
+  const goGamePlay = () => {
+    setRoute('game-play')
 
     if (typeof window !== 'undefined') {
-      window.history.pushState({ route: 'boardgame-play' }, '', BOARDGAME_PLAY_PATH)
+      window.history.pushState({ route: 'game-play' }, '', GAME_PLAY_PATH)
     }
   }
 
@@ -359,14 +364,14 @@ function App() {
   )
 
   const closing = <QASection onNavigate={goSection} />
-  const boardgame = <BoardgameSection onNavigate={goSection} onPlay={goBoardgamePlay} />
+  const game = <GameSection onNavigate={goSection} onPlay={goGamePlay} />
 
   const screen = {
     hero,
     theory,
     'case-study': caseStudy,
     analysis,
-    boardgame,
+    game,
     closing,
   }[activeSection]
 
@@ -453,8 +458,8 @@ function App() {
     </header>
   )
 
-  if (route === 'boardgame-play') {
-    return <BoardgamePlay />
+  if (route === 'game-play') {
+    return <GamePlay />
   }
 
   if (isHero) {

@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Sparkles, Target, Users } from 'lucide-react'
 import { FaAndroid, FaWindows } from 'react-icons/fa'
 import GlassCard from './GlassCard'
 
-const boardgameCards = [
+const gameCards = [
   {
     icon: Users,
     title: 'Nhập vai doanh nghiệp',
@@ -40,7 +40,7 @@ const downloadOptions = [
   },
 ]
 
-export default function BoardgameSection({ onNavigate, onPlay }) {
+export default function GameSection({ onNavigate, onPlay }) {
   const [downloadMessage, setDownloadMessage] = useState(null)
 
   const handleUnavailableDownload = (message) => {
@@ -81,7 +81,7 @@ export default function BoardgameSection({ onNavigate, onPlay }) {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3">
-              {boardgameCards.map((card) => {
+              {gameCards.map((card) => {
                 const Icon = card.icon
                 return (
                   <div

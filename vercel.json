@@ -1,0 +1,98 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/((?!api/|TheLastShop/|downloads/|game-preview/|assets/|favicon.ico|vite.svg).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/TheLastShop/Build/(.*)\\.wasm",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.wasm\\.br",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "br"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.js\\.br",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "br"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.data\\.br",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "br"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.wasm\\.gz",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "gzip"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.js\\.gz",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "gzip"
+        }
+      ]
+    },
+    {
+      "source": "/TheLastShop/Build/(.*)\\.data\\.gz",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream"
+        },
+        {
+          "key": "Content-Encoding",
+          "value": "gzip"
+        }
+      ]
+    }
+  ]
+}

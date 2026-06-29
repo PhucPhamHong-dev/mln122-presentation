@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => {
   const devApiKey = env.DEEPSEEK_API_KEY || env.VITE_DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEY
 
   return {
+    base: '/',
     plugins: [
       react(),
       tailwindcss(),

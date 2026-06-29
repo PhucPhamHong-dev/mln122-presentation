@@ -18,7 +18,7 @@ export const navItems = [
   { id: 'theory', label: 'Lý luận' },
   { id: 'case-study', label: 'Case Study' },
   { id: 'analysis', label: 'Đánh giá' },
-  { id: 'boardgame', label: 'Game' },
+  { id: 'game', label: 'Game' },
   { id: 'closing', label: 'Q&A' },
 ]
 

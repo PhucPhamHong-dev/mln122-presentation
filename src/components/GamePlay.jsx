@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 
 const UNITY_BUILD_URL = '/TheLastShop/index.html'
 
-function BoardgamePlayPage() {
+function GamePlayPage() {
   const [buildReady, setBuildReady] = useState(null)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function BoardgamePlayPage() {
       return
     }
 
-    window.location.href = '/?section=boardgame'
+    window.location.href = '/?section=game'
   }
 
   const renderLoading = () => (
@@ -91,4 +91,4 @@ function BoardgamePlayPage() {
   )
 }
 
-export default BoardgamePlayPage
+export default GamePlayPage
