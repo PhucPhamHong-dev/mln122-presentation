@@ -40,7 +40,7 @@ const downloadOptions = [
   },
 ]
 
-export default function GameSection({ onNavigate, onPlay }) {
+export default function CreativeProductSection({ onNavigate, onPlay }) {
   const [downloadMessage, setDownloadMessage] = useState(null)
 
   const handleUnavailableDownload = (message) => {
@@ -55,15 +55,14 @@ export default function GameSection({ onNavigate, onPlay }) {
     <section className="flex h-full flex-col gap-5 rounded-[28px] border border-slate-200 bg-[#fbf8f1] p-5 shadow-2xl shadow-black/5 md:p-7">
       <div>
         <span className="inline-flex rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-amber-600">
-          Phần IV
+          Sản phẩm sáng tạo
         </span>
         <h2 className="mt-4 font-[family-name:var(--font-heading)] text-3xl font-light tracking-tight text-slate-900 md:text-5xl">
-          Game mô phỏng quá trình cạnh tranh
+          GAME: The Last Shop
         </h2>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base">
-          Trải nghiệm tương tác giúp người xem hiểu rõ hơn quá trình từ cạnh tranh tự do đến độc
-          quyền.
-        </p>
+        <h2 className="mt-1 text-lg font-semibold tracking-tight text-slate-700 md:text-xl">
+          Mô phỏng quá trình cạnh tranh tự do dẫn đến độc quyền
+        </h2>
       </div>
 
       <GlassCard className="flex-1">
@@ -71,7 +70,7 @@ export default function GameSection({ onNavigate, onPlay }) {
           <div className="flex h-full flex-col gap-4">
             <div className="space-y-3">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-amber-600">
-                Sản phẩm sáng tạo
+                HƯỚNG DẪN
               </p>
               <p className="max-w-2xl text-base leading-[1.75] text-slate-600 md:text-[17px]">
                 Người chơi nhập vai doanh nghiệp trên thị trường, đưa ra quyết định về giá, sản
@@ -169,21 +168,21 @@ export default function GameSection({ onNavigate, onPlay }) {
       <div className="flex items-center justify-between border-t border-slate-200 pt-4 text-xs">
         <button
           type="button"
-          onClick={() => onNavigate('analysis')}
+          onClick={() => onNavigate('closing')}
           className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900"
         >
           <ArrowLeft className="h-4 w-4" />
-          Quay lại Phần III
+          Quay lại Q&A
         </button>
         <div className="hidden font-mono uppercase tracking-[0.22em] text-amber-600 md:block">
           Mục 4
         </div>
         <button
           type="button"
-          onClick={() => onNavigate('closing')}
+          onClick={() => onNavigate('hero')}
           className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-2 font-bold text-black hover:bg-amber-400"
         >
-          Tiếp tục phần Q&A
+          Về đầu trang ↑
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>

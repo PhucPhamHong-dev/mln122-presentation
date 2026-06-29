@@ -6,6 +6,7 @@ import GlassCard from './components/GlassCard'
 import TheorySection from './components/TheorySection'
 import QASection from './components/QASection'
 import GameSection from './components/GameSection'
+import MiniGameSection from './components/MiniGameSection'
 import GamePlay from './components/GamePlay'
 import TabStage from './components/TabStage'
 
@@ -13,6 +14,10 @@ const theoryOrder = theorySections.map((item) => item.id)
 const analysisOrder = analysisSections.map((item) => item.id)
 const GAME_PLAY_PATH = '/game-play'
 const mainSectionIds = new Set(navItems.map((item) => item.id))
+const mainSectionAliases = {
+  game: 'creative-product',
+  boardgame: 'creative-product',
+}
 
 function readLocationState() {
   if (typeof window === 'undefined') {
@@ -21,15 +26,15 @@ function readLocationState() {
 
   const { pathname, search } = window.location
   if (pathname === '/boardgame-play') {
-    return { route: 'game-play', section: 'game' }
+    return { route: 'game-play', section: 'creative-product' }
   }
 
   if (pathname === GAME_PLAY_PATH) {
-    return { route: 'game-play', section: 'game' }
+    return { route: 'game-play', section: 'creative-product' }
   }
 
   const section = new URLSearchParams(search).get('section')
-  const normalizedSection = section === 'boardgame' ? 'game' : section
+  const normalizedSection = mainSectionAliases[section] || section
   return {
     route: 'main',
     section: mainSectionIds.has(normalizedSection) ? normalizedSection : 'hero',
@@ -64,7 +69,7 @@ function App() {
     setActiveSection(id)
 
     if (typeof window !== 'undefined') {
-      const nextUrl = id === 'game' ? '/?section=game' : '/'
+      const nextUrl = id === 'hero' ? '/' : `/?section=${id}`
       window.history.pushState({ route: 'main', section: id }, '', nextUrl)
     }
   }
@@ -92,23 +97,19 @@ function App() {
   }
 
   const hero = (
-    <section className="relative h-[100svh] w-[100vw] overflow-hidden bg-[#071018]">
-      <div className="absolute inset-0 bg-[url('/assets/hero-city-1.jpg')] bg-cover bg-center" />
-      <video
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-82 saturate-110 contrast-105"
-        src="/assets/hero-loop.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/assets/hero-city-1.jpg"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.80)_0%,rgba(0,0,0,0.56)_26%,rgba(0,0,0,0.18)_58%,rgba(0,0,0,0.42)_82%,rgba(0,0,0,0.72)_100%),linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.16)_36%,rgba(0,0,0,0)_58%,rgba(0,0,0,0.40)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_38%,rgba(255,204,92,0.30),rgba(255,180,0,0.12)_18%,transparent_48%),radial-gradient(circle_at_18%_24%,rgba(255,176,0,0.16),transparent_24%),radial-gradient(circle_at_84%_18%,rgba(255,255,255,0.10),transparent_18%)] mix-blend-screen" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_18%,rgba(0,0,0,0)_34%,rgba(0,0,0,0.16)_70%,rgba(0,0,0,0.28)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,236,180,0.14),transparent_18%)] blur-3xl" />
+    <section className="hero-shell relative isolate h-[100svh] w-[100vw] overflow-hidden bg-[#071018]">
+      <div className="hero-bg absolute inset-0 z-0 bg-[url('/hero/market-to-monopoly.png')] bg-cover bg-center bg-no-repeat" />
+      <div className="hero-fog-warm absolute inset-[-18%] z-[1] pointer-events-none" />
+      <div className="hero-fog-cold absolute inset-[-18%] z-[1] pointer-events-none" />
+      <div className="hero-mid-fog absolute inset-[-10%] z-[2] pointer-events-none" />
+      <div className="hero-clouds absolute inset-[-12%] z-[3] pointer-events-none" />
+      <div className="hero-dust absolute inset-0 z-[4] pointer-events-none" />
+      <div className="hero-rain absolute inset-[-10%] z-[5] pointer-events-none" />
+      <div className="hero-light-beam absolute inset-0 z-[6] pointer-events-none" />
+      <div className="hero-grain absolute inset-0 z-[7] pointer-events-none" />
+      <div className="hero-vignette absolute inset-0 z-[8] pointer-events-none" />
 
-      <div className="relative h-full w-full">
+      <div className="relative z-20 h-full w-full">
         <div className="absolute left-6 top-1/2 max-w-[720px] -translate-y-[35%] px-0 sm:left-10 md:left-[72px]">
           <h1 className="max-w-[720px] font-[family-name:var(--font-heading)] text-[44px] font-extrabold leading-[1.05] tracking-tight text-white sm:text-[52px] md:text-[76px] xl:text-[92px]">
             <span className="block">
@@ -353,10 +354,10 @@ function App() {
         </div>
         <button
           type="button"
-          onClick={() => goSection('closing')}
+          onClick={() => goSection('mini-game')}
           className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-2 font-bold text-black hover:bg-amber-400"
         >
-          Tiếp tục phần Q&A
+          Tiếp tục Mini game →
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
@@ -364,15 +365,18 @@ function App() {
   )
 
   const closing = <QASection onNavigate={goSection} />
-  const game = <GameSection onNavigate={goSection} onPlay={goGamePlay} />
+  const miniGame = <MiniGameSection onNavigate={goSection} />
+  const creativeProduct = <GameSection onNavigate={goSection} onPlay={goGamePlay} />
 
   const screen = {
     hero,
     theory,
     'case-study': caseStudy,
     analysis,
-    game,
+    'mini-game': miniGame,
     closing,
+    'creative-product': creativeProduct,
+    game: creativeProduct,
   }[activeSection]
 
   const header = (
@@ -401,14 +405,6 @@ function App() {
             isHero ? 'hidden border-white/20 sm:block' : 'hidden border-slate-200/70 sm:block',
           ].join(' ')}
           >
-            <p
-              className={[
-                'text-[10px] font-semibold uppercase tracking-[0.28em]',
-                isHero ? 'text-white/70' : 'text-amber-600',
-              ].join(' ')}
-            >
-              Môn thuyết trình
-            </p>
             <p className={isHero ? 'text-[12px] text-white/78' : 'text-[12px] text-slate-500'}>
               Kinh tế chính trị Mác - Lênin
             </p>

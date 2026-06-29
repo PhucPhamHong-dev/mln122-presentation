@@ -18,8 +18,9 @@ export const navItems = [
   { id: 'theory', label: 'Lý luận' },
   { id: 'case-study', label: 'Case Study' },
   { id: 'analysis', label: 'Đánh giá' },
-  { id: 'game', label: 'Game' },
+  { id: 'mini-game', label: 'Mini game' },
   { id: 'closing', label: 'Q&A' },
+  { id: 'creative-product', label: 'Sản phẩm sáng tạo' },
 ]
 
 export const heroHighlights = [
@@ -389,8 +390,8 @@ export const analysisSections = [
     footer: {
       back: '3.2',
       backLabel: 'Quay lại 3.2',
-      next: 'closing',
-      nextLabel: 'Tiếp tục phần Q&A',
+      next: 'mini-game',
+      nextLabel: 'Tiếp tục Mini game',
     },
   },
 ]

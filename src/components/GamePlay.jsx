@@ -33,7 +33,7 @@ function GamePlayPage() {
       return
     }
 
-    window.location.href = '/?section=game'
+    window.location.href = '/?section=creative-product'
   }
 
   const renderLoading = () => (

@@ -17,6 +17,8 @@ export const presentationKnowledge = {
     'Vai trò điều tiết của Nhà nước',
     'Lập luận, biện luận, phản biện khi thuyết trình',
     'Đánh giá và bài học lịch sử',
+    'Mini game',
+    'Sản phẩm sáng tạo',
   ],
   sections: [
     {
@@ -74,11 +76,19 @@ export const presentationKnowledge = {
       ],
     },
     {
-      id: 'game',
-      title: 'Game đang phát triển',
+      id: 'mini-game',
+      title: 'Mini game đang phát triển',
       facts: [
-        'Mục game đang phát triển và sẽ được bổ sung ở giai đoạn sau.',
-        'Hiện chỉ hiển thị khung placeholder để giữ ổn định giao diện.',
+        'Mini game là hoạt động tương tác nhanh dùng trong phần thuyết trình trực tiếp.',
+        'Mục này hiện chỉ hiển thị trạng thái đang phát triển để giữ ổn định luồng trình bày.',
+      ],
+    },
+    {
+      id: 'creative-product',
+      title: 'Sản phẩm sáng tạo',
+      facts: [
+        'Sản phẩm sáng tạo của nhóm là game The Last Shop mô phỏng quá trình cạnh tranh.',
+        'Người chơi nhập vai doanh nghiệp, đưa ra quyết định về giá, sản xuất và mở rộng thị phần.',
       ],
     },
   ],

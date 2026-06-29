@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Bot, Loader2, Send, Trash2 } from 'lucide-react'
+import { ArrowRight, Bot, Loader2, Send, Trash2 } from 'lucide-react'
 import { qaConclusionItems, qaQuickQuestions, qaWelcomeMessage } from '../data/qaContent'
 
 const STORAGE_KEY = 'qa_ai_session'
@@ -411,16 +411,17 @@ export default function QASection({ onNavigate }) {
         </aside>
       </div>
 
-      <div className="mt-6 flex items-center justify-between border-t border-slate-200/80 pt-3 text-xs backdrop-blur-sm md:px-1">
+      <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-200/80 pt-3 text-xs backdrop-blur-sm md:px-1">
         <div className="hidden font-mono uppercase tracking-[0.22em] text-amber-600 md:block">
           Mục 4
         </div>
         <button
           type="button"
-          onClick={() => onNavigate('hero')}
+          onClick={() => onNavigate('creative-product')}
           className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-2 font-bold text-black hover:bg-amber-400"
         >
-          Về đầu trang →
+          Tiếp tục Sản phẩm sáng tạo
+          <ArrowRight className="h-4 w-4" />
         </button>
       </div>
     </section>
