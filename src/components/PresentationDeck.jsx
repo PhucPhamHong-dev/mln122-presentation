@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, Monitor, Smartphone } from 'lucide-react'
+import { ArrowRight, Menu, Monitor, Smartphone, X } from 'lucide-react'
 import Reveal from './Reveal'
 import TabStage from './TabStage'
 import { navItems, theoryData, monopolyFormsData, stateMonopolyData, bigTechData, practicalTabs, conclusionData, creativeProductData } from '../data/presentationDeck'
@@ -62,6 +62,7 @@ function DarkCard({ children, className = '', delay = 0 }) {
 
 export function HeroSection({ onStart, onNavigate }) {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   useEffect(() => {
     HERO_SLIDES.forEach((src) => {
@@ -99,7 +100,8 @@ export function HeroSection({ onStart, onNavigate }) {
       <div className="hero-vignette absolute inset-0 z-[7] pointer-events-none" />
 
       <header className="absolute inset-x-4 top-5 z-40 md:inset-x-16">
-        <div className="mx-auto flex h-[66px] w-full items-center justify-between gap-4 rounded-[18px] border border-white/18 bg-[rgba(10,30,45,0.34)] px-4 shadow-[0_10px_32px_rgba(0,0,0,0.22)] backdrop-blur-[14px] md:h-[70px] md:px-5">
+        <div className="mx-auto rounded-[18px] border border-white/18 bg-[rgba(10,30,45,0.34)] px-4 shadow-[0_10px_32px_rgba(0,0,0,0.22)] backdrop-blur-[14px] md:px-5">
+          <div className="flex h-[66px] w-full items-center justify-between gap-4 md:h-[70px]">
           <div className="flex items-center gap-3">
             <img
               src="/assets/FPT_Education_logo.svg"
@@ -111,12 +113,15 @@ export function HeroSection({ onStart, onNavigate }) {
             </div>
           </div>
 
-          <nav className="flex h-full items-center gap-1 overflow-x-auto whitespace-nowrap text-xs md:gap-2 md:text-sm">
+          <nav className="hidden h-full items-center gap-1 whitespace-nowrap text-xs md:flex md:gap-2 md:text-sm">
             {navItems.slice(0, 1).map((item) => (
               <button
                 key={item.id}
                 type="button"
-                onClick={() => onNavigate?.(item.id)}
+                onClick={() => {
+                  setMobileNavOpen(false)
+                  onNavigate?.(item.id)
+                }}
                 className="relative whitespace-nowrap rounded-[10px] px-3 py-2 text-amber-300 transition-all duration-300 md:px-4"
               >
                 {item.label}
@@ -127,13 +132,55 @@ export function HeroSection({ onStart, onNavigate }) {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => onNavigate?.(item.id)}
+                onClick={() => {
+                  setMobileNavOpen(false)
+                  onNavigate?.(item.id)
+                }}
                 className="relative whitespace-nowrap rounded-[10px] px-3 py-2 text-white/72 transition-all duration-300 hover:text-white md:px-4"
               >
                 {item.label}
               </button>
             ))}
           </nav>
+
+          <button
+            type="button"
+            onClick={() => setMobileNavOpen((current) => !current)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-[12px] border border-white/16 bg-white/8 text-white transition-colors hover:bg-white/12 md:hidden"
+            aria-label={mobileNavOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng'}
+            aria-expanded={mobileNavOpen}
+          >
+            {mobileNavOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+          </div>
+
+          {mobileNavOpen ? (
+            <div className="border-t border-white/12 py-3 md:hidden">
+              <nav className="grid gap-2">
+                {navItems.map((item) => {
+                  const active = item.id === 'hero'
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => {
+                        setMobileNavOpen(false)
+                        onNavigate?.(item.id)
+                      }}
+                      className={[
+                        'rounded-[12px] px-4 py-3 text-left text-sm font-medium transition-all duration-300',
+                        active
+                          ? 'bg-amber-300/14 text-amber-300'
+                          : 'bg-white/6 text-white/82 hover:bg-white/10 hover:text-white',
+                      ].join(' ')}
+                    >
+                      {item.label}
+                    </button>
+                  )
+                })}
+              </nav>
+            </div>
+          ) : null}
         </div>
       </header>
 
