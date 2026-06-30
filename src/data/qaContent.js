@@ -1,24 +1,24 @@
 export const qaQuickQuestions = [
   'Vì sao cạnh tranh tự do dẫn đến độc quyền?',
-  'Tích tụ và tập trung tư bản khác nhau thế nào?',
-  'Độc quyền có xóa bỏ cạnh tranh không?',
-  'Bài học lịch sử rút ra là gì?',
+  'Big Tech AI liên hệ với độc quyền thế nào?',
+  'Độc quyền nhà nước khác gì độc quyền tư bản?',
+  'The Last Shop minh họa lý luận ra sao?',
 ]
 
 export const qaConclusionItems = [
   {
-    title: 'Kết luận đề tài',
-    body: 'Từ cạnh tranh tự do đến độc quyền là một tiến trình lịch sử có quy luật, không phải ngoại lệ.',
+    title: 'Hỏi nhanh',
+    body: 'Dùng để hỏi ngắn về các khái niệm, lập luận và so sánh trong bài trình bày.',
   },
   {
-    title: 'Thông điệp',
-    body: 'Độc quyền không phủ định cạnh tranh. Nó tái định hình, nâng cấp và làm gay gắt hóa cạnh tranh.',
+    title: 'Phản biện',
+    body: 'Có thể hỏi theo hướng chứng minh, đối chiếu hoặc liên hệ thực tiễn khi thuyết trình.',
   },
   {
-    title: 'Ứng dụng',
-    body: 'Bài học giúp nhìn sâu hơn vào cấu trúc thị trường, quyền lực doanh nghiệp và vai trò điều tiết.',
+    title: 'Liên hệ',
+    body: 'Trợ lý sẽ ưu tiên trả lời theo góc nhìn Mác - Lênin, kinh tế chính trị và thực tiễn thị trường.',
   },
 ]
 
 export const qaWelcomeMessage =
-  'Xin chào, mình là trợ lý học thuật AI của bài thuyết trình. Bạn có thể hỏi về cạnh tranh tự do, tích tụ và tập trung tư bản, sự hình thành độc quyền hoặc bài học lịch sử của đề tài.'
+  'Xin chào, mình là trợ lý học thuật AI của bài thuyết trình. Bạn có thể hỏi về độc quyền, độc quyền nhà nước, Big Tech AI, nền tảng số, dữ liệu lớn, công nghệ lõi hoặc cách phản biện khi thuyết trình.'

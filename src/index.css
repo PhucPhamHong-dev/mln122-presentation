@@ -46,121 +46,101 @@ body {
 
 .hero-shell {
   isolation: isolate;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 24% 48%, rgba(255, 191, 94, 0.2), transparent 28%),
+    radial-gradient(circle at 78% 46%, rgba(100, 126, 156, 0.14), transparent 30%),
+    linear-gradient(180deg, #1a2431 0%, #121b26 100%);
 }
 
-.hero-bg {
-  transform: scale(1.03);
-  animation: heroZoom 24s ease-in-out infinite alternate;
-  will-change: transform;
+.hero-slide {
+  opacity: 0;
+  transform: scale(1.008);
+  transition:
+    opacity 1.65s ease-in-out,
+    filter 1.65s ease-in-out;
+  will-change: opacity, filter;
+  filter: saturate(0.98) brightness(0.98);
+}
+
+.hero-slide-active {
+  opacity: 1;
+  filter: saturate(1.02) brightness(1);
 }
 
 .hero-fog-warm {
-  opacity: 0.58;
+  opacity: 0.3;
   filter: blur(42px);
   background:
-    radial-gradient(circle at 22% 52%, rgba(255, 165, 55, 0.52), transparent 34%),
-    radial-gradient(circle at 36% 40%, rgba(255, 225, 175, 0.26), transparent 38%),
-    radial-gradient(circle at 18% 70%, rgba(255, 145, 30, 0.18), transparent 42%);
-  animation: fogDriftWarm 18s ease-in-out infinite alternate;
+    radial-gradient(circle at 22% 52%, rgba(255, 186, 92, 0.34), transparent 34%),
+    radial-gradient(circle at 36% 40%, rgba(255, 234, 198, 0.18), transparent 38%),
+    radial-gradient(circle at 18% 70%, rgba(255, 188, 110, 0.12), transparent 42%);
+  animation: fogDriftWarm 28s ease-in-out infinite alternate;
   mix-blend-mode: screen;
 }
 
 .hero-fog-cold {
-  opacity: 0.4;
-  filter: blur(48px);
+  opacity: 0.18;
+  filter: blur(46px);
   background:
-    radial-gradient(circle at 76% 46%, rgba(75, 140, 190, 0.42), transparent 38%),
-    radial-gradient(circle at 64% 64%, rgba(25, 44, 84, 0.36), transparent 40%),
-    radial-gradient(circle at 86% 58%, rgba(120, 180, 255, 0.12), transparent 34%);
-  animation: fogDriftCold 22s ease-in-out infinite alternate;
+    radial-gradient(circle at 76% 46%, rgba(115, 148, 176, 0.2), transparent 38%),
+    radial-gradient(circle at 64% 64%, rgba(66, 84, 112, 0.18), transparent 40%),
+    radial-gradient(circle at 86% 58%, rgba(170, 198, 225, 0.08), transparent 34%);
+  animation: fogDriftCold 30s ease-in-out infinite alternate;
   mix-blend-mode: screen;
 }
 
 .hero-dust {
-  opacity: 0.54;
+  opacity: 0.18;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.34) 0 1px, transparent 1.35px),
-    radial-gradient(circle, rgba(255, 186, 92, 0.24) 0 1px, transparent 1.35px);
+    radial-gradient(circle, rgba(255, 255, 255, 0.26) 0 1px, transparent 1.35px),
+    radial-gradient(circle, rgba(255, 204, 136, 0.18) 0 1px, transparent 1.35px);
   background-size: 88px 88px, 132px 132px;
   background-position: 0 0, 36px 56px;
-  animation: dustFloat 14s linear infinite;
+  animation: dustFloat 24s linear infinite;
   mix-blend-mode: screen;
 }
 
 .hero-mid-fog {
-  opacity: 0.62;
-  filter: blur(40px);
+  opacity: 0.24;
+  filter: blur(38px);
   background:
-    radial-gradient(circle at 45% 52%, rgba(255, 220, 170, 0.36), transparent 18%),
-    radial-gradient(circle at 52% 48%, rgba(255, 255, 255, 0.22), transparent 24%),
-    radial-gradient(circle at 58% 55%, rgba(140, 165, 200, 0.22), transparent 28%);
-  animation: fogDriftMid 20s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
-}
-
-.hero-clouds {
-  opacity: 0.56;
-  filter: blur(20px);
-  background:
-    radial-gradient(circle at 22% 18%, rgba(255, 223, 170, 0.34), transparent 22%),
-    radial-gradient(circle at 35% 24%, rgba(255, 185, 92, 0.22), transparent 18%),
-    radial-gradient(circle at 56% 16%, rgba(236, 239, 244, 0.18), transparent 20%),
-    radial-gradient(circle at 74% 20%, rgba(113, 152, 204, 0.28), transparent 18%),
-    radial-gradient(circle at 88% 18%, rgba(83, 119, 178, 0.18), transparent 16%);
-  animation: cloudDrift 34s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
-}
-
-.hero-rain {
-  opacity: 0.68;
-  background-image:
-    repeating-linear-gradient(
-      118deg,
-      transparent 0 24px,
-      rgba(255, 255, 255, 0.14) 24px 25px,
-      transparent 25px 58px
-    ),
-    repeating-linear-gradient(
-      118deg,
-      transparent 0 72px,
-      rgba(120, 170, 255, 0.08) 72px 73px,
-      transparent 73px 128px
-    );
-  background-size: 180px 180px, 260px 260px;
-  animation: rainFall 1.7s linear infinite;
-  filter: blur(0.35px);
+    radial-gradient(circle at 45% 52%, rgba(255, 230, 188, 0.2), transparent 18%),
+    radial-gradient(circle at 52% 48%, rgba(255, 255, 255, 0.15), transparent 24%),
+    radial-gradient(circle at 58% 55%, rgba(176, 190, 208, 0.14), transparent 28%);
+  animation: fogDriftMid 26s ease-in-out infinite alternate;
   mix-blend-mode: screen;
 }
 
 .hero-light-beam {
-  opacity: 0.5;
+  opacity: 0.22;
   background:
     linear-gradient(
       118deg,
       transparent 0%,
-      rgba(255, 199, 102, 0.3) 28%,
-      rgba(255, 232, 181, 0.18) 39%,
+      rgba(255, 210, 138, 0.2) 28%,
+      rgba(255, 238, 206, 0.12) 39%,
       transparent 56%
     ),
-    linear-gradient(72deg, transparent 0%, rgba(74, 125, 204, 0.18) 64%, transparent 82%);
-  filter: blur(14px);
+    linear-gradient(72deg, transparent 0%, rgba(139, 160, 186, 0.1) 64%, transparent 82%);
+  filter: blur(12px);
   mix-blend-mode: screen;
 }
 
 .hero-grain {
-  opacity: 0.48;
+  opacity: 0.1;
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1px),
-    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px);
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px);
   background-size: 80px 80px, 120px 120px;
   mix-blend-mode: overlay;
 }
 
 .hero-vignette {
   background:
-    radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.34) 100%),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.16) 42%, rgba(0, 0, 0, 0.28) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, transparent 30%, rgba(0, 0, 0, 0.48) 100%);
+    radial-gradient(circle at center, transparent 42%, rgba(15, 12, 8, 0.14) 100%),
+    linear-gradient(90deg, rgba(20, 15, 10, 0.3) 0%, rgba(20, 15, 10, 0.08) 42%, rgba(18, 20, 26, 0.14) 100%),
+    linear-gradient(180deg, rgba(255, 248, 236, 0.09) 0%, transparent 24%, rgba(255, 246, 234, 0.08) 72%, rgba(12, 12, 16, 0.12) 100%);
 }
 
 .grid-bg {

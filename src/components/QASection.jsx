@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowRight, Bot, Loader2, Send, Trash2 } from 'lucide-react'
-import { qaConclusionItems, qaQuickQuestions, qaWelcomeMessage } from '../data/qaContent'
+import { Bot, Loader2, Send, Trash2 } from 'lucide-react'
+import { conclusionData } from '../data/presentationDeck'
+import { qaQuickQuestions, qaWelcomeMessage } from '../data/qaContent'
 
 const STORAGE_KEY = 'qa_ai_session'
 const API_ERROR_MESSAGE =
@@ -107,7 +108,7 @@ function MessageBubble({ message }) {
   )
 }
 
-export default function QASection({ onNavigate }) {
+export default function QASection() {
   const [sessionId, setSessionId] = useState(() => createId('session'))
   const [messages, setMessages] = useState(() => createInitialMessages())
   const [summary, setSummary] = useState('')
@@ -256,19 +257,18 @@ export default function QASection({ onNavigate }) {
         <main className="h-auto min-h-fit overflow-visible">
           <div className="h-auto overflow-visible rounded-[20px] border border-[#e3d8c8] bg-[rgba(255,255,255,0.82)] px-4 py-5 shadow-[0_12px_28px_rgba(20,30,50,0.05)] md:px-[22px] md:py-[26px] lg:pr-[24px]">
             <span className="inline-flex rounded-full border border-[#ff9800]/20 bg-[#ff9800]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[#f59e0b]">
-              Kết luận đề tài
+              Kết luận
             </span>
-            <h2 className="mt-4 max-w-[10ch] font-[family-name:var(--font-heading)] text-[28px] font-black leading-[0.98] tracking-[-0.03em] text-slate-900 sm:text-[30px] md:text-[34px] lg:text-[36px] xl:text-[38px]">
-              <span className="block">CẢM ƠN CÔ</span>
-              <span className="mt-2 block">VÀ CÁC BẠN</span>
+            <h2 className="mt-4 max-w-[12ch] font-[family-name:var(--font-heading)] text-[28px] font-black leading-[0.98] tracking-[-0.03em] text-slate-900 sm:text-[30px] md:text-[34px] lg:text-[36px] xl:text-[38px]">
+              <span className="block">KẾT LUẬN</span>
+              <span className="mt-2 block">VÀ Q&A</span>
             </h2>
             <p className="mt-4 text-[15px] font-bold text-[#f59e0b] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[18px]">
-              Đã lắng nghe phần thuyết trình
+              Kết luận trọng tâm và hỏi đáp ngay trong cùng một màn
             </p>
             <p className="mt-4 max-w-[30rem] text-[13px] leading-[1.72] text-[#526179] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[15px]">
-              Chúng tôi hy vọng bài trình bày đem lại cái nhìn trực quan, sinh động và khoa học về
-              bước chuyển dịch lịch sử từ cạnh tranh tự do sang độc quyền theo lăng kính học thuyết
-              Mác - Lênin.
+              Bên trái là phần chốt ý của bài trình bày. Bên phải là trợ lý học thuật để hỏi tiếp,
+              so sánh khái niệm và phản biện các ý liên quan đến chủ đề.
             </p>
 
             <div className="mt-5 flex-1 rounded-[18px] border border-[#dde5ef] bg-white/80 p-[22px] shadow-[0_10px_22px_rgba(20,30,50,0.045)]">
@@ -276,7 +276,7 @@ export default function QASection({ onNavigate }) {
                 Tóm tắt kết luận
               </p>
               <div className="space-y-2.5">
-                {qaConclusionItems.map((item, index) => (
+                {conclusionData.map((item, index) => (
                   <div
                     key={item.title}
                     className={[
@@ -297,16 +297,6 @@ export default function QASection({ onNavigate }) {
                 ))}
               </div>
             </div>
-          </div>
-
-          <div className="mt-6">
-            <button
-              type="button"
-              onClick={() => onNavigate('analysis')}
-              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-            >
-              ← Quay lại Phần III
-            </button>
           </div>
         </main>
 
@@ -411,19 +401,6 @@ export default function QASection({ onNavigate }) {
         </aside>
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-200/80 pt-3 text-xs backdrop-blur-sm md:px-1">
-        <div className="hidden font-mono uppercase tracking-[0.22em] text-amber-600 md:block">
-          Mục 4
-        </div>
-        <button
-          type="button"
-          onClick={() => onNavigate('creative-product')}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 px-3 py-2 font-bold text-black hover:bg-amber-400"
-        >
-          Tiếp tục Sản phẩm sáng tạo
-          <ArrowRight className="h-4 w-4" />
-        </button>
-      </div>
     </section>
   )
 }
