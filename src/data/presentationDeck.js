@@ -156,14 +156,14 @@ export const bigTechData = [
     tag: 'Mô hình nền tảng AI',
     ecosystem: 'ChatGPT, API, model ecosystem, công cụ sinh nội dung và agent.',
     advantage: 'Lợi thế ở mô hình lõi, thương hiệu AI và tốc độ lan tỏa người dùng.',
-    monopolyLink: 'Tập trung tư bản AI diễn ra qua mô hình, dữ liệu huấn luyện và quyền truy cập hệ sinh thái.',
+    monopolyLink: 'Liên hệ lý luận: OpenAI được nhóm sử dụng như một trường hợp minh họa cho vai trò của mô hình nền tảng, năng lực tính toán, dữ liệu và hệ sinh thái API trong ngành AI. Những yếu tố này cho thấy AI hiện đại đòi hỏi nguồn lực lớn và có thể tạo lợi thế đáng kể cho các doanh nghiệp có khả năng đầu tư liên tục. Đây là phân tích học thuật của nhóm, không phải kết luận rằng OpenAI là doanh nghiệp độc quyền.',
   },
   {
     title: 'Microsoft AI',
     tag: 'Cloud + Enterprise',
     ecosystem: 'Azure, Copilot, GitHub, Office, tích hợp doanh nghiệp và hạ tầng cloud.',
     advantage: 'Nắm cloud enterprise, hệ sinh thái công việc và kênh phân phối doanh nghiệp.',
-    monopolyLink: 'Độc quyền hạ tầng điện toán và tích hợp dọc làm tăng rào cản gia nhập.',
+    monopolyLink: 'Liên hệ lý luận: Microsoft có lợi thế về cloud, công cụ phát triển và kênh phân phối tới doanh nghiệp. Việc AI được tích hợp vào Azure, GitHub và các công cụ làm việc minh họa khả năng kết hợp giữa hạ tầng, phần mềm và hệ sinh thái phân phối. Sự kết hợp này có thể tạo lợi thế quy mô và làm tăng chi phí chuyển đổi của người dùng, nhưng cần phân tích từng thị trường cụ thể trước khi đưa ra kết luận về độc quyền.',
   },
   {
     title: 'Google AI',
@@ -265,17 +265,10 @@ export const creativeProductData = {
   ],
   downloads: [
     {
-      id: 'windows',
-      label: 'Tải Windows',
-      href: '/downloads/TheLastShop-Windows.zip',
-      enabled: false,
-      message: 'Bản tải Windows đang được cập nhật.',
-    },
-    {
       id: 'android',
       label: 'Tải Android',
-      href: '/downloads/TheLastShop-Android.apk',
-      enabled: false,
+      href: 'https://drive.google.com/file/d/1bw1bKQNAgHkhdC3aZMHp0OLyo9sL7w1s/view?usp=sharing',
+      enabled: true,
       message: 'Bản tải Android đang được cập nhật.',
     },
   ],

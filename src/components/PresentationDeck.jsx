@@ -561,7 +561,7 @@ export function GameShowcase({ onNavigate, onPlay }) {
       eyebrow={creativeProductData.eyebrow}
       title={creativeProductData.title}
       intro={creativeProductData.subtitle}
-      footer={{ back: 'conclusion', backLabel: 'Quay lại Kết luận & Q&A', next: 'closing', nextLabel: 'Tiếp tục Kết luận & Q&A', onNavigate }}
+      footer={{ back: 'conclusion', backLabel: 'Quay lại Kết luận & Q&A', onNavigate }}
     >
       <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
         <DarkCard>
